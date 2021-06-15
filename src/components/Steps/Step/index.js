@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, NavLink } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core";
-import { Grid } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 
@@ -41,16 +41,16 @@ export default function Step(props) {
           <RadioButtonUncheckedIcon className={styles.icon} />
         )}
       </Grid>
-      
+
       <Grid item xs={9} className={styles.midColumn}>
-        {props.title}
+        <Typography variant="body1">{props.title}</Typography>
       </Grid>
 
       <Grid item xs={2} className={styles.rightColumn}>
         {!props.completed ? (
           <Router>
             <NavLink to="/" style={{ color: "#13a779" }}>
-              Start
+              <Typography variant="body1">Start</Typography>
             </NavLink>
           </Router>
         ) : (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, NavLink } from "react-router-dom";
 
 import {
@@ -41,7 +41,19 @@ const useStyles = makeStyles({
 export default function Steps(props) {
   const styles = useStyles();
 
-  function ProgressCircle(value) {
+  const [percentage, setPercentage] = useState(0);
+
+  useEffect(() => {
+    let completeCount = 0;
+    props.stepsData.forEach((prop) => {
+      if (prop.completed) completeCount++;
+    });
+
+    if (completeCount === 7) setPercentage(100);
+    else setPercentage(completeCount * 15);
+  }, [props.stepsData]);
+
+  function ProgressCircle() {
     return (
       <Box
         marginLeft={1}
@@ -57,7 +69,7 @@ export default function Steps(props) {
         />
         <CircularProgress
           variant="determinate"
-          value={-15}
+          value={percentage * -1}
           size={22}
           thickness={10}
           className={styles.topCircle}
@@ -76,7 +88,8 @@ export default function Steps(props) {
             </Typography>
           </Grid>
           <Grid item xs={4} className={styles.progressSection}>
-            10% completed <ProgressCircle />
+            <Typography variant="body2">{percentage}% completed</Typography>
+            <ProgressCircle />
           </Grid>
         </Grid>
       </Box>
@@ -99,7 +112,7 @@ export default function Steps(props) {
       >
         <Router>
           <NavLink to="/" style={{ color: "#13a779" }}>
-            See all tasks
+            <Typography variant="body1">See all tasks</Typography>
           </NavLink>
         </Router>
       </Box>

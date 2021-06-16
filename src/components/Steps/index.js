@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import {
   Container,
@@ -38,7 +39,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Steps({stepsData, allTaskLink}) {
+const Steps = ({ stepsData, allTaskLink }) => {
   const styles = useStyles();
 
   const [percentage, setPercentage] = useState(0);
@@ -98,7 +99,7 @@ export default function Steps({stepsData, allTaskLink}) {
       {stepsData.map(({ completed, title, link }, i) => {
         return (
           <div key={i}>
-            <Step completed={completed} title={title} link={link}/>
+            <Step completed={completed} title={title} link={link} />
             <Divider />
           </div>
         );
@@ -118,4 +119,22 @@ export default function Steps({stepsData, allTaskLink}) {
       </Box>
     </Container>
   );
-}
+};
+
+export const StepsData = PropTypes.shape({
+  completed: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired
+});
+
+Steps.propTypes = {
+  stepsData: PropTypes.arrayOf(StepsData).isRequired,
+  allTaskLink: PropTypes.string.isRequired
+};
+
+Steps.defaultProps = {
+  stepsData: [],
+  allTaskLink: ""
+};
+
+export default Steps;

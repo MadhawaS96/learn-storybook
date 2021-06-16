@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import { makeStyles } from "@material-ui/core";
 import { Grid, Typography } from "@material-ui/core";
@@ -29,7 +30,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Step({ completed, title, link }) {
+const Step = ({ completed, title, link }) => {
   const styles = useStyles();
 
   return (
@@ -59,4 +60,18 @@ export default function Step({ completed, title, link }) {
       </Grid>
     </Grid>
   );
-}
+};
+
+Step.propTypes = {
+  completed: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired
+};
+
+Step.defaultProps = {
+  completed: false,
+  title: "",
+  link: ""
+};
+
+export default Step;

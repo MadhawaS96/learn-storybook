@@ -1,35 +1,41 @@
-export const allCompleteData = [
-  {
-    completed: true,
-    title: "First Step",
-    link: "Link"
-  },
-  {
-    completed: true,
-    title: "Second Step",
-    link: "Link"
-  },
-  {
-    completed: true,
-    title: "Third Step",
-    link: "Link"
-  }
-];
+export const allCompleteData = {
+  stepsData: [
+    {
+      completed: true,
+      title: "First Step",
+      link: "/"
+    },
+    {
+      completed: true,
+      title: "Second Step",
+      link: "/"
+    },
+    {
+      completed: true,
+      title: "Third Step",
+      link: "/"
+    }
+  ],
+  allTaskLink: "/"
+};
 
-export const allPendingData = [
-  {
-    completed: false,
-    title: "First Step",
-    link: "Link"
-  },
-  {
-    completed: false,
-    title: "Second Step",
-    link: "Link"
-  },
-  {
-    completed: false,
-    title: "Third Step",
-    link: "Link"
-  }
-];
+export const allPendingData = {
+  stepsData: [
+    {
+      completed: false,
+      title: "First Step",
+      link: "/"
+    },
+    {
+      completed: false,
+      title: "Second Step",
+      link: "/"
+    },
+    {
+      completed: false,
+      title: "Third Step",
+      link: "/"
+    }
+  ],
+  allTaskLink: "/"
+};

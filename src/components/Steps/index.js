@@ -38,20 +38,20 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Steps(props) {
+export default function Steps({stepsData, allTaskLink}) {
   const styles = useStyles();
 
   const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
     let completeCount = 0;
-    props.stepsData.forEach((prop) => {
+    stepsData.forEach((prop) => {
       if (prop.completed) completeCount++;
     });
 
     if (completeCount === 7) setPercentage(100);
     else setPercentage(completeCount * 15);
-  }, [props.stepsData]);
+  }, [stepsData]);
 
   function ProgressCircle() {
     return (
@@ -95,10 +95,10 @@ export default function Steps(props) {
       </Box>
       <Divider />
 
-      {props.stepsData.map((obj, i) => {
+      {stepsData.map(({ completed, title, link }, i) => {
         return (
           <div key={i}>
-            <Step completed={obj.completed} title={obj.title} />
+            <Step completed={completed} title={title} link={link}/>
             <Divider />
           </div>
         );
@@ -111,7 +111,7 @@ export default function Steps(props) {
         paddingTop={2}
       >
         <Router>
-          <NavLink to="/" style={{ color: "#13a779" }}>
+          <NavLink to={allTaskLink} style={{ color: "#13a779" }}>
             <Typography variant="body1">See all tasks</Typography>
           </NavLink>
         </Router>

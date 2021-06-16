@@ -6,7 +6,7 @@ import stepsData from "./core/data/steps-data";
 function App() {
   return (
     <div className="App">
-      <Steps stepsData={stepsData} />
+      <Steps stepsData={stepsData.stepsData} allTaskLink={stepsData.allTaskLink}/>
     </div>
   );
 }

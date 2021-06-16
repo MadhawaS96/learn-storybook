@@ -12,10 +12,12 @@ const Template = (args) => <Steps {...args} />;
 
 export const AllCompleted = Template.bind({});
 AllCompleted.args = {
-  stepsData: allCompleteData
+  stepsData: allCompleteData.stepsData,
+  allTaskLink: allCompleteData.allTaskLink
 };
 
 export const AllPending = Template.bind({});
 AllPending.args = {
-  stepsData: allPendingData
+  stepsData: allPendingData.stepsData,
+  allTaskLink: allPendingData.allTaskLink,
 };

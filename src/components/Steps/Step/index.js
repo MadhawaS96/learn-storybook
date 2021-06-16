@@ -29,13 +29,13 @@ const useStyles = makeStyles({
   }
 });
 
-export default function Step(props) {
+export default function Step({ completed, title, link }) {
   const styles = useStyles();
 
   return (
     <Grid container spacing={0}>
       <Grid item xs={1} className={styles.leftColumn}>
-        {props.completed ? (
+        {completed ? (
           <CheckCircleOutlineIcon className={styles.icon} />
         ) : (
           <RadioButtonUncheckedIcon className={styles.icon} />
@@ -43,13 +43,13 @@ export default function Step(props) {
       </Grid>
 
       <Grid item xs={9} className={styles.midColumn}>
-        <Typography variant="body1">{props.title}</Typography>
+        <Typography variant="body1">{title}</Typography>
       </Grid>
 
       <Grid item xs={2} className={styles.rightColumn}>
-        {!props.completed ? (
+        {!completed ? (
           <Router>
-            <NavLink to="/" style={{ color: "#13a779" }}>
+            <NavLink to={link} style={{ color: "#13a779" }}>
               <Typography variant="body1">Start</Typography>
             </NavLink>
           </Router>
